@@ -1,2 +1,1 @@
-class Barco():
-	eslora = 4
+Pregunta
