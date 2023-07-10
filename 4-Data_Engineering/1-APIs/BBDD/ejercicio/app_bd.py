@@ -13,7 +13,14 @@ def welcome():
     return "Welcome to mi API conected to my books database"
 
 # 0.Ruta para obtener todos los libros
-# @app.route('/api/v1/resources/books/all', methods=['GET'])
+@app.route('/api/v1/resources/books/all', methods=['GET'])
+def get_all():
+    connection = sqlite3.connect('books.db')
+    cursor = connection.cursor()
+    query = "SELECT * from books"
+    result = cursor.execute(query).fetchall()
+    connection.close()
+    return jsonify(result)
 
 # 1.Ruta para obtener el conteo de libros por autor ordenados de forma descendente
 # @app.route('/api/v1/resources/booksbyauthor/', methods=['GET'])
